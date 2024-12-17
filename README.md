@@ -6,6 +6,7 @@
 1. Create a virtual environment: `python -m venv <your_environment_name>`
 2. Run virtual environment: `.\<your_environment_name>\Scripts\activate`
 3. Install required libraries: `pip install -r requirements.txt`
+4. Run app: `streamlit run app.py`
 
 Replace `<your_environment_name>` with your actual virtual environment name.
 
