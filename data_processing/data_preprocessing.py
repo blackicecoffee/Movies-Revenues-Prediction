@@ -25,6 +25,7 @@ def fillNull(lst: pd.DataFrame) -> None:
     lst['Running Time'].fillna(lst['Running Time'].mean(), inplace=True)
     lst['Genres'].fillna(lst['Genres'].mode()[0], inplace=True)
     lst['In Release'].fillna(lst['In Release'].mean(), inplace=True)
+    lst['Widest Release'].fillna(lst['Widest Release'].mean(), inplace=True)
     lst['Director'].fillna(lst['Director'].mode()[0], inplace=True)
     lst['Domestic'].fillna(lst['Domestic'].mean(), inplace=True)
     lst['International'].fillna(lst['International'].mean(), inplace=True)
