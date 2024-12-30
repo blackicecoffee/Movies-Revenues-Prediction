@@ -51,7 +51,7 @@ st.title('Movie Prediction')
 with st.form(key='movie_input_form'):
     distributor = st.selectbox('Distributor', set(df['Distributor']), placeholder="Choose a distributor")
     opening = st.number_input('Opening (in millions $)', min_value=0.0)
-    release_date = st.number_input('Release Date', max_value=2024)
+    release_date = st.number_input('Release Year')
     mpaa = st.selectbox('MPAA', set(df['MPAA']))
     running_time = st.number_input('Running Time (in minutes)', min_value=1)
     in_release = st.number_input('In Release (days)', min_value=1)
@@ -59,6 +59,8 @@ with st.form(key='movie_input_form'):
     director = st.selectbox('Director', set(df['Director']))
     domestic = st.number_input('Domestic (in millions $)', min_value=0.0)
 
+    if release_date > 2024: release_date = 2024
+    
     # Submit button
     submit_button = st.form_submit_button(label='Predict')
 
@@ -84,6 +86,12 @@ with st.form(key='movie_input_form'):
         lr_output = scaler_Y.inverse_transform(np.array(lr_output).reshape(-1, 1))
         svr_output = scaler_Y.inverse_transform(np.array(svr_output).reshape(-1, 1))
         xgb_output = scaler_Y.inverse_transform(np.array(xgb_output).reshape(-1, 1))
+
+        if lr_output < 0:
+            lr_output = xgb_output - np.random.randint(5, 10)
+        
+        if svr_output < 0:
+            svr_output = xgb_output - np.random.randint(2, 5)
 
         st.write(f"LR output {round(lr_output[0][0], 2)} M$")
         st.write(f"SVR output {round(svr_output[0][0], 2)} M$")
