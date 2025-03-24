@@ -1,4 +1,4 @@
-# Intro-DS-Project
+# Movies crawling and revenues prediction system
 
 ## How to run
 **On your project folder, following these steps:**
